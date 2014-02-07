@@ -1,12 +1,10 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("PO.Core.Imaging")]
+[assembly: AssemblyTitle("Civic.Core.Imaging")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Polar Opposite")]
-[assembly: AssemblyProduct("PO.Core.Imaging")]
-[assembly: AssemblyCopyright("Copyright © Polar Opposite 2012")]
+[assembly: AssemblyProduct("Civic.Core.Imaging")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

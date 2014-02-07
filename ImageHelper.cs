@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace PO.Core.Imaging
+namespace Civic.Core.Imaging
 {
 	public static class ImageHelper
 	{
