@@ -1,0 +1,3 @@
+[submodule "Reference"]
+	path = Reference
+	url = git@git.civic360.com:Civic.Core/References.git
