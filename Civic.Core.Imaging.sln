@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Civic.Core.Imaging", "Civic.Core.Imaging\Civic.Core.Imaging.csproj", "{FFC449F8-147B-49B9-800E-001C24D9C308}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{7F5AEF32-196C-4A4F-B161-F917747002CF}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\Civic.Core.Imaging.nuspec = Nuget\Civic.Core.Imaging.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
