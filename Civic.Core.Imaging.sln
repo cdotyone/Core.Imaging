@@ -17,6 +17,7 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Nuget-45|Any CPU = Nuget-45|Any CPU
 		Nuget-46|Any CPU = Nuget-46|Any CPU
+		Nuget-47|Any CPU = Nuget-47|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -26,6 +27,8 @@ Global
 		{FFC449F8-147B-49B9-800E-001C24D9C308}.Nuget-45|Any CPU.Build.0 = Nuget-45|Any CPU
 		{FFC449F8-147B-49B9-800E-001C24D9C308}.Nuget-46|Any CPU.ActiveCfg = Nuget-46|Any CPU
 		{FFC449F8-147B-49B9-800E-001C24D9C308}.Nuget-46|Any CPU.Build.0 = Nuget-46|Any CPU
+		{FFC449F8-147B-49B9-800E-001C24D9C308}.Nuget-47|Any CPU.ActiveCfg = Nuget-47|Any CPU
+		{FFC449F8-147B-49B9-800E-001C24D9C308}.Nuget-47|Any CPU.Build.0 = Nuget-47|Any CPU
 		{FFC449F8-147B-49B9-800E-001C24D9C308}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC449F8-147B-49B9-800E-001C24D9C308}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
