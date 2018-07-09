@@ -53,7 +53,10 @@ namespace Civic.Core.Imaging
 			var image = Image.FromStream(fullImage);
 
 			int newWidth, newHeight;
-			ResizeWithAspect(cropToSize, image.Width, image.Height, maxWidth, maxHeight, out newWidth, out newHeight);
+		    if (maxWidth == 0) maxWidth = image.Width;
+		    if (maxHeight == 0) maxHeight = image.Height;
+
+            ResizeWithAspect(cropToSize, image.Width, image.Height, maxWidth, maxHeight, out newWidth, out newHeight);
 
 			var thumbnail = new Bitmap(newWidth, newHeight);
 			var graphic = Graphics.FromImage(thumbnail);
