@@ -22,6 +22,16 @@ namespace Civic.Core.Imaging
         {
             get { return this.image; }
         }
+        public string Base64Image
+        {
+            get
+            {
+                System.IO.MemoryStream stream = new System.IO.MemoryStream();
+                this.image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                byte[] imageBytes = stream.ToArray();
+                return Convert.ToBase64String(imageBytes);
+            }
+        }
         public int Width
         {
             get { return this.width; }
