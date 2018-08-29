@@ -98,10 +98,12 @@
     <Compile Include="..\References\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="CaptchaImgGenerator.cs" />
     <Compile Include="ImageHelper.cs" />
     <Compile Include="OctreeQuantizer.cs" />
     <Compile Include="Quantizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\References\civic.snk">

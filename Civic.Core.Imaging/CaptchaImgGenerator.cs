@@ -9,7 +9,7 @@ namespace Civic.Core.Imaging
     public static class CaptchaImgGenerator
     {
 
-        internal static Dictionary<string,RandomImage> GetRandomImage()
+        public static Dictionary<string,RandomImage> GetRandomImage()
         {
             var result = new Dictionary<string, RandomImage>();
             var capText = GenerateRandomCode();
