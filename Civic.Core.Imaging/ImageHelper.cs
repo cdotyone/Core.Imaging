@@ -104,7 +104,12 @@ namespace Civic.Core.Imaging
 					var quantizer = new OctreeQuantizer(255, 8);
 					using (Bitmap quantized = quantizer.Quantize(thumbnail))
 					{
-						quantized.Save(thumbnailStream, ImageFormat.Png);
+                        Graphics g = Graphics.FromImage(quantized);
+                        g.Clear(Color.Transparent);
+                        g.FillRectangle(Brushes.Red, 100, 100, 100, 100);
+
+                        g.Flush();
+                        quantized.Save(thumbnailStream, ImageFormat.Png);
 					}
 				}
 			}
