@@ -60,15 +60,23 @@ namespace Civic.Core.Imaging
 
 			var thumbnail = new Bitmap(newWidth, newHeight);
 			var graphic = Graphics.FromImage(thumbnail);
-			
-			graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            if(contentType == "image/png")
+            {
+                graphic.Clear(Color.Transparent);
+            }
+
+            
+
+            graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
 			graphic.SmoothingMode = SmoothingMode.HighQuality;
 			graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
 			graphic.CompositingQuality = CompositingQuality.HighQuality;
 
 			graphic.DrawImage(image, 0, 0, newWidth, newHeight);
 
-			if (cropToSize)
+
+            if (cropToSize)
 			{
 				var thumbnailCrop = new Bitmap(maxWidth, maxHeight);
 				var graphicCrop = Graphics.FromImage(thumbnailCrop);
@@ -100,25 +108,21 @@ namespace Civic.Core.Imaging
 			{
 				using (thumbnail)
 				{
-					//thumbnail.Save(thumbnailStream, ImageFormat.Png);
 					var quantizer = new OctreeQuantizer(255, 8);
 					using (Bitmap quantized = quantizer.Quantize(thumbnail))
 					{
-                        Graphics g = Graphics.FromImage(quantized);
-                        g.Clear(Color.Transparent);
-                        g.FillRectangle(Brushes.Red, 100, 100, 100, 100);
-
-                        g.Flush();
                         quantized.Save(thumbnailStream, ImageFormat.Png);
 					}
 				}
 			}
-		}
 
-		/// <summary>
-		/// Determines best size to resize to given the maxes and if we can crop
-		/// </summary>
-		private static void ResizeWithAspect(bool cropToSize, int originalWidth, int originalHeight, int maxWidth, int maxHeight, out int sizedWidth, out int sizedHeight)
+            graphic.Flush();
+        }
+
+        /// <summary>
+        /// Determines best size to resize to given the maxes and if we can crop
+        /// </summary>
+        private static void ResizeWithAspect(bool cropToSize, int originalWidth, int originalHeight, int maxWidth, int maxHeight, out int sizedWidth, out int sizedHeight)
 		{
 			sizedHeight = maxHeight;
 			sizedWidth = maxWidth;
