@@ -15,7 +15,7 @@ namespace Civic.Core.Imaging
         {
             var result = new Dictionary<string, RandomImage>();
             var capText = GenerateRandomCode(5);
-            RandomImage ci = new RandomImage(capText, 300, 75);
+            RandomImage ci = new RandomImage(capText, 400, 95);
             result.Add(capText, ci);
             return result;
         }
