@@ -100,7 +100,7 @@ namespace Civic.Core.Imaging
             GraphicsPath path = new GraphicsPath();
             //path.AddString(this.text, font.FontFamily, (int) font.Style, 
             //    font.Size, rect, format);
-            path.AddString(this.text, font.FontFamily, (int)font.Style, 75, rect, format);
+            path.AddString(this.text, font.FontFamily, (int)font.Style, fontSize, rect, format);
             float v = 4F;
             PointF[] points =
               {
