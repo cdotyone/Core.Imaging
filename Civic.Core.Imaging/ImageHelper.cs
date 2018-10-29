@@ -126,6 +126,31 @@ namespace Civic.Core.Imaging
             graphic.Flush();
         }
 
+        public static Stream SetImageBackgroundColor(Stream fullImage, string RGBAData = "rgba(255,255,255,1)")
+        {
+            var image = Image.FromStream(fullImage);
+            var format = image.RawFormat;
+            var graphic = Graphics.FromImage(image);
+
+            var regex = new Regex(@"([0-9]+\.[0-9]+)");
+            var matches = regex.Matches(RGBAData);
+            int r = GetColorValue(matches[0].Value);
+            int g = GetColorValue(matches[1].Value);
+            int b = GetColorValue(matches[2].Value);
+            int a = GetColorValue(matches[3].Value);
+
+            var color = Color.FromArgb(a, r, g, b);
+            graphic.Clear(color);
+            graphic.DrawImage(image, 0, 0, image.Width, image.Height);
+            graphic.Flush();
+
+            using (Stream newImage = new MemoryStream())
+            {
+                image.Save(newImage, format);
+                return newImage;
+            }
+        }
+
         /// <summary>
         /// Determines best size to resize to given the maxes and if we can crop
         /// </summary>
