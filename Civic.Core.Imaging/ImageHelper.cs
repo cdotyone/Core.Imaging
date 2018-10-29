@@ -2,7 +2,9 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Civic.Core.Imaging
 {
@@ -48,7 +50,7 @@ namespace Civic.Core.Imaging
 		/// <param name="maxHeight">maximum height</param>
 		/// <param name="cropToSize">can we crop to make thumbnail fit, helps create uniform thumbnail tiles</param>
 		/// <param name="thumbnailStream">The stream to write the thumbnail to</param>
-		public static void CreateThumbnail(Stream fullImage, string contentType, int maxWidth, int maxHeight, bool cropToSize, Stream thumbnailStream)
+		public static void CreateThumbnail(Stream fullImage, string contentType, int maxWidth, int maxHeight, bool cropToSize, string backgroundRGBAData,Stream thumbnailStream)
 		{
 			var image = Image.FromStream(fullImage);
 
@@ -60,11 +62,16 @@ namespace Civic.Core.Imaging
 
 			var thumbnail = new Bitmap(newWidth, newHeight);
 			var graphic = Graphics.FromImage(thumbnail);
+            
+            var regex = new Regex(@"([0-9]+\.[0-9]+)");
+            var matches = regex.Matches(backgroundRGBAData);
+            int r = GetColorValue(matches[0].Value);
+            int g = GetColorValue(matches[1].Value);
+            int b = GetColorValue(matches[2].Value);
+            int a = GetColorValue(matches[3].Value);
 
-            if(contentType == "image/png")
-            {
-                graphic.Clear(Color.Transparent);
-            }
+            var color = Color.FromArgb(a, r, g, b);
+            graphic.Clear(color);
 
             
 
@@ -155,6 +162,12 @@ namespace Civic.Core.Imaging
 				sizedHeight = (int)(sizedWidth * aspect);
 			}
 		}
+
+
+        private static int GetColorValue(string match)
+        {
+            return (int)Math.Round(double.Parse(match, CultureInfo.InvariantCulture) * 255);
+        }
 
 		public static string ByteSize(long size)
 		{
