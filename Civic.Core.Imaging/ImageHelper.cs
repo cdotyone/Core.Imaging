@@ -50,7 +50,7 @@ namespace Civic.Core.Imaging
 		/// <param name="maxHeight">maximum height</param>
 		/// <param name="cropToSize">can we crop to make thumbnail fit, helps create uniform thumbnail tiles</param>
 		/// <param name="thumbnailStream">The stream to write the thumbnail to</param>
-		public static void CreateThumbnail(Stream fullImage, string contentType, int maxWidth, int maxHeight, bool cropToSize, string backgroundRGBAData,Stream thumbnailStream)
+		public static void CreateThumbnail(Stream fullImage, string contentType, int maxWidth, int maxHeight, bool cropToSize, Stream thumbnailStream, string backgroundRGBAData = "rgba(255,255,255,1)")
 		{
 			var image = Image.FromStream(fullImage);
 
