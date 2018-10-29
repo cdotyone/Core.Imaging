@@ -71,7 +71,7 @@ namespace Civic.Core.Imaging
             int a = GetColorValue(matches[3].Value);
 
             var color = Color.FromArgb(a, r, g, b);
-            graphic.Clear(color);
+            graphic.Clear(color); 
 
             
 
