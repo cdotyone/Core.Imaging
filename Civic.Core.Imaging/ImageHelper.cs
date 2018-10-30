@@ -50,7 +50,7 @@ namespace Civic.Core.Imaging
 		/// <param name="maxHeight">maximum height</param>
 		/// <param name="cropToSize">can we crop to make thumbnail fit, helps create uniform thumbnail tiles</param>
 		/// <param name="thumbnailStream">The stream to write the thumbnail to</param>
-		public static void CreateThumbnail(Stream fullImage, string contentType, int maxWidth, int maxHeight, bool cropToSize, Stream thumbnailStream, string backgroundRGBAData = "rgba(255,255,255,1)")
+		public static void CreateThumbnail(Stream fullImage, string contentType, int maxWidth, int maxHeight, bool cropToSize, Stream thumbnailStream)
 		{
 			var image = Image.FromStream(fullImage);
 
@@ -62,16 +62,8 @@ namespace Civic.Core.Imaging
 
 			var thumbnail = new Bitmap(newWidth, newHeight);
 			var graphic = Graphics.FromImage(thumbnail);
-            
-            var regex = new Regex(@"([0-9]+\.[0-9]+)");
-            var matches = regex.Matches(backgroundRGBAData);
-            int r = GetColorValue(matches[0].Value);
-            int g = GetColorValue(matches[1].Value);
-            int b = GetColorValue(matches[2].Value);
-            int a = GetColorValue(matches[3].Value);
-
-            var color = Color.FromArgb(a, r, g, b);
-            graphic.Clear(color);
+          
+            graphic.Clear(Color.Transparent);
 
             
 
@@ -124,31 +116,6 @@ namespace Civic.Core.Imaging
 			}
 
             graphic.Flush();
-        }
-
-        public static Stream SetImageBackgroundColor(Stream fullImage, string RGBAData = "rgba(255,255,255,1)")
-        {
-            var image = Image.FromStream(fullImage);
-            var format = image.RawFormat;
-            var graphic = Graphics.FromImage(image);
-
-            var regex = new Regex(@"([0-9]+\.[0-9]+)");
-            var matches = regex.Matches(RGBAData);
-            int r = GetColorValue(matches[0].Value);
-            int g = GetColorValue(matches[1].Value);
-            int b = GetColorValue(matches[2].Value);
-            int a = GetColorValue(matches[3].Value);
-
-            var color = Color.FromArgb(a, r, g, b);
-            graphic.Clear(color);
-            graphic.DrawImage(image, 0, 0, image.Width, image.Height);
-            graphic.Flush();
-
-            using (Stream newImage = new MemoryStream())
-            {
-                image.Save(newImage, format);
-                return newImage;
-            }
         }
 
         /// <summary>
