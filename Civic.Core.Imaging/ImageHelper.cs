@@ -2,7 +2,9 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Civic.Core.Imaging
 {
@@ -60,11 +62,8 @@ namespace Civic.Core.Imaging
 
 			var thumbnail = new Bitmap(newWidth, newHeight);
 			var graphic = Graphics.FromImage(thumbnail);
-
-            if(contentType == "image/png")
-            {
-                graphic.Clear(Color.Transparent);
-            }
+          
+            graphic.Clear(Color.Transparent);
 
             
 
@@ -155,6 +154,12 @@ namespace Civic.Core.Imaging
 				sizedHeight = (int)(sizedWidth * aspect);
 			}
 		}
+
+
+        private static int GetColorValue(string match)
+        {
+            return (int)Math.Round(double.Parse(match, CultureInfo.InvariantCulture) * 255);
+        }
 
 		public static string ByteSize(long size)
 		{
