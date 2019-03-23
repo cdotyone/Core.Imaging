@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Civic.Core.Imaging")]
+[assembly: AssemblyTitle("Core.Imaging")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Civic.Core.Imaging")]
+[assembly: AssemblyProduct("Core.Imaging")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

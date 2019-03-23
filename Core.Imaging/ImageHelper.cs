@@ -6,7 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Civic.Core.Imaging
+namespace Core.Imaging
 {
 	public static class ImageHelper
 	{
