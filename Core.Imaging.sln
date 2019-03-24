@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{7F5AEF32
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.gitlab-ci.yml = .gitlab-ci.yml
-		Nuget\Core.Imaging.nuspec = Nuget\Core.Imaging.nuspec
+		Nuget\Stack.Core.Imaging.nuspec = Nuget\Stack.Core.Imaging.nuspec
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Imaging", "Core.Imaging\Core.Imaging.csproj", "{0D6A4A92-E49C-4167-BEC6-0E85DE82D178}"
