@@ -4,9 +4,8 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
-using System.Text.RegularExpressions;
 
-namespace Core.Imaging
+namespace Stack.Core.Imaging
 {
 	public static class ImageHelper
 	{

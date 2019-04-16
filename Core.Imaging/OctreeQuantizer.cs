@@ -12,7 +12,7 @@ using System.Collections;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace Core.Imaging
+namespace Stack.Core.Imaging
 {
 	/// <summary>
 	/// Quantize using an Octree

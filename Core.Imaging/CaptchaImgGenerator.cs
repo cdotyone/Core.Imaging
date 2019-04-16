@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Core.Imaging
+namespace Stack.Core.Imaging
 {
     public static class CaptchaImgGenerator
     {
