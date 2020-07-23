@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Codigo.Core.Imaging")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Codigo.Core.Imaging")]
+[assembly: AssemblyProduct("Codigo.Core")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
