@@ -1,16 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net471</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;netstandard2.0;net48</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>Codigo.Core.Imaging</AssemblyName>
+    <RootNamespace>Core.Imaging</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
     <DefineConstants>NETCORE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1'">
+    <DefineConstants>NETCORE;</DefineConstants>
+  </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net471' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -23,7 +28,7 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net471'">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net48'">
     <DefineConstants>NET471;NETFULL</DefineConstants>
   </PropertyGroup>
 
@@ -35,4 +40,16 @@
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
   </ItemGroup>
 
+
+  <PropertyGroup>
+    <PackageId>Codigo.Core.Imaging</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>cdotyone</Authors>
+    <PackageTags>Foundation,Images</PackageTags>
+    <Title>Codigo Core Imaging</Title>
+    <Description>Abstracts basic image manipulation</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="$(PackageLicenseFile)" />
+  </ItemGroup>
 </Project>

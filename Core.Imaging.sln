@@ -6,6 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{7F5AEF32-196C-4A4F-B161-F917747002CF}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		CHANGELOG.md = CHANGELOG.md
+		.github\workflows\dotnet-core.yml = .github\workflows\dotnet-core.yml
+		LICENSE = LICENSE
+		package.json = package.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codigo.Core.Imaging", "Core.Imaging\Codigo.Core.Imaging.csproj", "{0D6A4A92-E49C-4167-BEC6-0E85DE82D178}"

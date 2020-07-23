@@ -12,7 +12,7 @@ using System.Collections;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace Stack.Core.Imaging
+namespace Core.Imaging
 {
 	/// <summary>
 	/// Quantize using an Octree
@@ -76,7 +76,7 @@ namespace Stack.Core.Imaging
 		/// <summary>
 		/// Retrieve the palette for the quantized image
 		/// </summary>
-		/// <param name="original">Any old palette, this is overrwritten</param>
+		/// <param name="original">Any old palette, this is overwritten</param>
 		/// <returns>The new color palette</returns>
 		protected override ColorPalette GetPalette(ColorPalette original)
 		{
@@ -183,12 +183,9 @@ namespace Stack.Core.Imaging
 			/// <summary>
 			/// Return the array of reducible nodes
 			/// </summary>
-			protected OctreeNode[] ReducibleNodes
-			{
-				get { return _reducibleNodes; }
-			}
+			protected OctreeNode[] ReducibleNodes => _reducibleNodes;
 
-			/// <summary>
+            /// <summary>
 			/// Keep track of the previous node that was quantized
 			/// </summary>
 			/// <param name="node">The node last quantized</param>
@@ -284,13 +281,13 @@ namespace Stack.Core.Imaging
 					if (_leaf)
 					{
 						octree.Leaves++;
-						_nextReducible = null;
+						NextReducible = null;
 						_children = null;
 					}
 					else
 					{
 						// Otherwise add this to the reducible nodes
-						_nextReducible = octree.ReducibleNodes[level];
+						NextReducible = octree.ReducibleNodes[level];
 						octree.ReducibleNodes[level] = this;
 						_children = new OctreeNode[8];
 					}
@@ -338,21 +335,14 @@ namespace Stack.Core.Imaging
 				/// <summary>
 				/// Get/Set the next reducible node
 				/// </summary>
-				public OctreeNode NextReducible
-				{
-					get { return _nextReducible; }
-					set { _nextReducible = value; }
-				}
+				public OctreeNode NextReducible { get; set; }
 
-				/// <summary>
+                /// <summary>
 				/// Return the child nodes
 				/// </summary>
-				public OctreeNode[] Children
-				{
-					get { return _children; }
-				}
+				public OctreeNode[] Children => _children;
 
-				/// <summary>
+                /// <summary>
 				/// Reduce this node by removing all of its children
 				/// </summary>
 				/// <returns>The number of leaves removed</returns>
@@ -472,12 +462,7 @@ namespace Stack.Core.Imaging
 				/// </summary>
 				private OctreeNode[] _children;
 
-				/// <summary>
-				/// Pointer to next reducible node
-				/// </summary>
-				private OctreeNode _nextReducible;
-
-				/// <summary>
+                /// <summary>
 				/// The index of this node in the palette
 				/// </summary>
 				private int _paletteIndex;

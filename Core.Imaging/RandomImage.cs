@@ -3,51 +3,39 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace Stack.Core.Imaging
+namespace Core.Imaging
 {
-    public class RandomImage
+    public class RandomImage : IDisposable
     {
-        //Default Constructor 
-        public RandomImage() { }
+        //Private variable
+        private readonly Random _random = new Random();
+
         //property
-        public string Text
-        {
-            get { return this.text; }
-        }
-        public Bitmap Image
-        {
-            get { return this.image; }
-        }
+        public string Text { get; }
+
+        public Bitmap Image { get; private set; }
+
         public string Base64Image
         {
             get
             {
                 System.IO.MemoryStream stream = new System.IO.MemoryStream();
-                this.image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
-                byte[] imageBytes = stream.ToArray();
+                Image.Save(stream, ImageFormat.Bmp);
+                var imageBytes = stream.ToArray();
                 return Convert.ToBase64String(imageBytes);
             }
         }
-        public int Width
-        {
-            get { return this.width; }
-        }
-        public int Height
-        {
-            get { return this.height; }
-        }
-        //Private variable
-        private string text;
-        private int width;
-        private int height;
-        private Bitmap image;
-        private Random random = new Random();
+        public int Width { get; private set; }
+
+        public int Height { get; private set; }
+
+
         //Methods declaration
         public RandomImage(string s, int width, int height)
         {
-            this.text = s;
-            this.SetDimensions(width, height);
-            this.GenerateImage();
+            this.Text = s;
+            this.setDimensions(width, height);
+            this.generateImage();
         }
         public void Dispose()
         {
@@ -57,27 +45,26 @@ namespace Stack.Core.Imaging
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
-                this.image.Dispose();
+                this.Image.Dispose();
         }
-        private void SetDimensions(int width, int height)
+        private void setDimensions(int width, int height)
         {
             if (width <= 0)
-                throw new ArgumentOutOfRangeException("width", width,
+                throw new ArgumentOutOfRangeException(nameof(width), width,
                     "Argument out of range, must be greater than zero.");
             if (height <= 0)
-                throw new ArgumentOutOfRangeException("height", height,
+                throw new ArgumentOutOfRangeException(nameof(height), height,
                     "Argument out of range, must be greater than zero.");
-            this.width = width;
-            this.height = height;
+            this.Width = width;
+            this.Height = height;
         }
-        private void GenerateImage()
+        private void generateImage()
         {
-            Bitmap bitmap = new Bitmap
-              (this.width, this.height, PixelFormat.Format32bppArgb);
-            Graphics g = Graphics.FromImage(bitmap);
+            var bitmap = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+            var g = Graphics.FromImage(bitmap);
             g.SmoothingMode = SmoothingMode.AntiAlias;
-            Rectangle rect = new Rectangle(0, 0, this.width, this.height);
-            HatchBrush hatchBrush = new HatchBrush(HatchStyle.SmallConfetti,
+            var rect = new Rectangle(0, 0, this.Width, this.Height);
+            var hatchBrush = new HatchBrush(HatchStyle.SmallConfetti,
                 Color.LightGray, Color.White);
             g.FillRectangle(hatchBrush, rect);
             SizeF size;
@@ -88,26 +75,28 @@ namespace Stack.Core.Imaging
             {
                 fontSize--;
                 font = new Font(FontFamily.GenericSansSerif, fontSize, FontStyle.Bold);
-                size = g.MeasureString(this.text, font);
+                size = g.MeasureString(this.Text, font);
             } while (size.Width > rect.Width);
-            StringFormat format = new StringFormat();
-            format.Alignment = StringAlignment.Center;
-            format.LineAlignment = StringAlignment.Center;
-            GraphicsPath path = new GraphicsPath();
+
+            var format = new StringFormat
+            {
+                Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center
+            };
+            var path = new GraphicsPath();
             //path.AddString(this.text, font.FontFamily, (int) font.Style, 
             //    font.Size, rect, format);
-            path.AddString(this.text, font.FontFamily, (int)font.Style, fontSize, rect, format);
+            path.AddString(this.Text, font.FontFamily, (int)font.Style, fontSize, rect, format);
             float v = 4F;
             PointF[] points =
               {
-                new PointF(this.random.Next(rect.Width) / v, this.random.Next(
+                new PointF(this._random.Next(rect.Width) / v, this._random.Next(
                    rect.Height) / v),
-                new PointF(rect.Width - this.random.Next(rect.Width) / v,
-                    this.random.Next(rect.Height) / v),
-                new PointF(this.random.Next(rect.Width) / v,
-                    rect.Height - this.random.Next(rect.Height) / v),
-                new PointF(rect.Width - this.random.Next(rect.Width) / v,
-                    rect.Height - this.random.Next(rect.Height) / v)
+                new PointF(rect.Width - this._random.Next(rect.Width) / v,
+                    this._random.Next(rect.Height) / v),
+                new PointF(this._random.Next(rect.Width) / v,
+                    rect.Height - this._random.Next(rect.Height) / v),
+                new PointF(rect.Width - this._random.Next(rect.Width) / v,
+                    rect.Height - this._random.Next(rect.Height) / v)
           };
             Matrix matrix = new Matrix();
             matrix.Translate(0F, 0F);
@@ -117,16 +106,16 @@ namespace Stack.Core.Imaging
             int m = Math.Max(rect.Width, rect.Height);
             for (int i = 0; i < (int)(rect.Width * rect.Height / 30F); i++)
             {
-                int x = this.random.Next(rect.Width);
-                int y = this.random.Next(rect.Height);
-                int w = this.random.Next(m / 50);
-                int h = this.random.Next(m / 50);
+                int x = this._random.Next(rect.Width);
+                int y = this._random.Next(rect.Height);
+                int w = this._random.Next(m / 50);
+                int h = this._random.Next(m / 50);
                 g.FillEllipse(hatchBrush, x, y, w, h);
             }
             font.Dispose();
             hatchBrush.Dispose();
             g.Dispose();
-            this.image = bitmap;
+            this.Image = bitmap;
         }
     }
 

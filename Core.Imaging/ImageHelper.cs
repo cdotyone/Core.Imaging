@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 
-namespace Stack.Core.Imaging
+namespace Core.Imaging
 {
 	public static class ImageHelper
 	{

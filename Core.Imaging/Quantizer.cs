@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
-namespace Stack.Core.Imaging
+namespace Core.Imaging
 {
 	/* 
 	  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF 
@@ -168,7 +168,7 @@ namespace Stack.Core.Imaging
 					for (int col = 0; col < width; col++)
 					{
 						// Check if this is the same as the last pixel. If so use that value
-						// rather than calculating it again. This is an inexpensive optimisation.
+						// rather than calculating it again. This is an inexpensive optimization.
 						if (Marshal.ReadInt32(pPreviousPixel) != Marshal.ReadInt32(pSourcePixel))
 						{
 							// Quantize the pixel
@@ -222,7 +222,7 @@ namespace Stack.Core.Imaging
 		/// <summary>
 		/// Retrieve the palette for the quantized image
 		/// </summary>
-		/// <param name="original">Any old palette, this is overrwritten</param>
+		/// <param name="original">Any old palette, this is overwritten</param>
 		/// <returns>The new color palette</returns>
 		protected abstract ColorPalette GetPalette(ColorPalette original);
 
@@ -234,12 +234,12 @@ namespace Stack.Core.Imaging
 		private int _pixelSize;
 
 		/// <summary>
-		/// Struct that defines a 32 bpp colour
+		/// Struct that defines a 32 bpp color
 		/// </summary>
 		/// <remarks>
 		/// This struct is used to read data from a 32 bits per pixel image
 		/// in memory, and is ordered in this manner as this is the way that
-		/// the data is layed out in memory
+		/// the data is laid out in memory
 		/// </remarks>
 		[StructLayout(LayoutKind.Explicit)]
 		public struct Color32
@@ -251,22 +251,22 @@ namespace Stack.Core.Imaging
 			}
 
 			/// <summary>
-			/// Holds the blue component of the colour
+			/// Holds the blue component of the color
 			/// </summary>
 			[FieldOffset(0)] public byte Blue;
 
 			/// <summary>
-			/// Holds the green component of the colour
+			/// Holds the green component of the color
 			/// </summary>
 			[FieldOffset(1)] public byte Green;
 
 			/// <summary>
-			/// Holds the red component of the colour
+			/// Holds the red component of the color
 			/// </summary>
 			[FieldOffset(2)] public byte Red;
 
 			/// <summary>
-			/// Holds the alpha component of the colour
+			/// Holds the alpha component of the color
 			/// </summary>
 			[FieldOffset(3)] public byte Alpha;
 
@@ -278,10 +278,7 @@ namespace Stack.Core.Imaging
 			/// <summary>
 			/// Return the color for this Color32 object
 			/// </summary>
-			public Color Color
-			{
-				get { return Color.FromArgb(Alpha, Red, Green, Blue); }
-			}
-		}
+			public Color Color => Color.FromArgb(Alpha, Red, Green, Blue);
+        }
 	}
 }

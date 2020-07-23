@@ -108,12 +108,12 @@ UpgradeLog*.XML
 
 node_modules
 dist
+.vs
 .tmp
 .sass-cache
 app/bower_components
 .idea
 .nuget
-.vs
 Civic.Inspector/app
 Civic.Inspector.UI/.idea
 Civic.Inspector/uploads/*

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Stack.Core.Imaging
+namespace Core.Imaging
 {
     public static class CaptchaImgGenerator
     {
