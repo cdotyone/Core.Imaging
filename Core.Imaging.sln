@@ -1,16 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{7F5AEF32-196C-4A4F-B161-F917747002CF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{7F5AEF32-196C-4A4F-B161-F917747002CF}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		.gitlab-ci.yml = .gitlab-ci.yml
-		Nuget\Stack.Core.Imaging.nuspec = Nuget\Stack.Core.Imaging.nuspec
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stack.Core.Imaging", "Core.Imaging\Stack.Core.Imaging.csproj", "{0D6A4A92-E49C-4167-BEC6-0E85DE82D178}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codigo.Core.Imaging", "Core.Imaging\Codigo.Core.Imaging.csproj", "{0D6A4A92-E49C-4167-BEC6-0E85DE82D178}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
