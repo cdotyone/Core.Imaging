@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/cdotyone/Core.Imaging/compare/v2.0.3...v2.1.0) (2021-12-01)
+
+
+### Features
+
+* add 5.0 and 6.0 support drop 3.1 ([b33045b](https://github.com/cdotyone/Core.Imaging/commit/b33045bc28e4d25e261d32984a908052da1ec15a))
+
+
+
 ## [2.0.3](https://github.com/cdotyone/Core.Imaging/compare/v2.0.2...v2.0.3) (2020-07-23)
 
 
